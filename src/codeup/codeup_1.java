@@ -1,6 +1,9 @@
 package codeup;
 
+
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class codeup_1 {
 
@@ -150,10 +153,100 @@ public class codeup_1 {
 //		주민번호를 입력받아 형태를 바꿔 출력해보자.
 		System.out.print("주민번호를 입력해주세여. EX)XXXXXX-XXXXXXX ");
 		Scanner sc = new Scanner(System.in) ;
+		String jubun = sc.nextLine();
+		
+		Pattern p = Pattern.compile("^[0-9]{6}[-][1-4][0-9]{6}$");
+		// ^는 시작을 의미
+		// [0-9]{6} => 이는 0에서 9사이의 숫자 중 하나가 들어가는 것이 6번 반복된다는 것이다.
+		Matcher m = p.matcher(jubun);
+		boolean bool = m.matches();
+		// 입력받은 jubun 이 주어진 정규식 패턴과 일차하면 true, 일치하지 않으면 false 
+		
+		
+		// === 7. "문자열".split("구분자") ===
+		//	      "문자열" 을 "구분자"로 잘라서 String 타입의 **배열++로 돌려주는 것이다.
+		if (bool) {
+			String[] jubunArr = jubun.split("-");
+			for (int z1=0;z1< jubunArr.length ; z1++) {
+				System.out.print(jubunArr[z1]);
+			}
+			
+		}
+		else {
+			System.out.println("잘못된 주민번호를 입력하셨습니다.");
+		}
+		
+//		1021.
+//		1개의 단어를 입력받아 그대로 출력해보자.
+		System.out.println("단어를 입력해보세요");
+		String str_1 = sc.nextLine() ; 
+//		ArrayList<String> list_1 = new ArrayList<>() ;
+//		for (int i1 = 0 ; i1<str_1.length() ; i1++) {
+//			list_1.add((str_1.charAt(i)));
+//		}
+//		
+		char[]chArr = str_1.toCharArray();
+		for(int q=0 ; q<chArr.length ; q++) {
+			System.out.print(chArr[q]);
+		}
+		
+		System.out.println();
+		
+//		1022.
+//		공백 문자가 포함되어 있는 문장을 입력받고 그대로 출력하는 연습을 해보자.
+//		공백이 포함되어 있는 한 문장이 입력된다.
+//		단, 입력되는 문장은 여러 개의 단어로 구성되고,엔터로 끝나며,
+//		최대 길이는 2000문자를 넘지 않는다.
+		System.out.println("문장을 입력하세요");	
+		String str_2 = sc.nextLine() ;
+		if ( str_2.length()<=20) {
+			System.out.println(str_2);
+			System.out.println(str_2.length());
+		}
+		else {
+			System.out.println("입력범위를 초과하셨습니다.");
+			System.out.println(str_2.length());
+		}
+		
+//		1023.
+//		실수 1개를 입력받아 정수 부분과 실수 부분으로 나누어 출력한다.
+//		
+		System.out.println("실수를 입력해주세여");
+		String str_3 = sc.nextLine() ;
+		float ft_str_3 = Float.parseFloat(str_3);
+		double a = Math.floor(ft_str_3) ; // 정수부분(상수)
+		
+		System.out.println(a);
+		System.out.println(ft_str_3-a);
+		
+		// 블로그 답변
+		System.out.println("\n== 블로그 답변 == \n");
+		System.out.println("실수를 입력해주세여");
+		Double db1 ;
+		db1 = sc.nextDouble() ;
+		sc.nextLine() ;
+		
+		String s ;
+		s=String.valueOf(db1) ;
+		String[]strArr = s.split(".") ;
+		System.out.println(strArr[0]);
+		System.out.println(strArr[1]);
 		
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		sc.close();
 	}// END OF MAIN METHOD ==============================================
 
 }
