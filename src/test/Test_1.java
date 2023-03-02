@@ -93,6 +93,8 @@ public class Test_1 {
 		System.out.println(sumArr[1]);
 		
 		sc.close();
+		
+		
 	}// END OF MAIN METHOD ================================================
 
 }
